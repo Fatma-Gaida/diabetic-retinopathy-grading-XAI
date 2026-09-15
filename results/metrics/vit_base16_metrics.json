@@ -1,0 +1,410 @@
+{
+  "run": {
+    "model": "vit_base_patch16_224",
+    "backbone": "vit_base_patch16_224",
+    "family": "ViT",
+    "architecture": "timm default, num_classes=5",
+    "classifier": "head",
+    "seed": 42,
+    "img_size": 512,
+    "select_on": "val_qwk",
+    "cam_method": "gradcam++",
+    "cam_layer": "blocks.11.norm1",
+    "n_params_total": 86438405,
+    "n_params_classifier": 3845,
+    "n_features": 768,
+    "timestamp": "2026-09-15 18:29:50"
+  },
+  "data": {
+    "prep_dir": "/kaggle/input/datasets/fatmagaida/aptos-prerocessed/aptos_preprocessed",
+    "preprocessing": {
+      "img_size": 512,
+      "fov_tol": 7,
+      "min_area_ratio": 0.05,
+      "interpolation": "area",
+      "padding": "none",
+      "normalization": "x/127.5 - 1.0 applied at load time, range [-1, 1]",
+      "seed": 42,
+      "val_n": 366,
+      "test_n": 366,
+      "train_n": 2930,
+      "split_level": "image (APTOS ne fournit pas d'identifiant patient)"
+    },
+    "split_sha1": {
+      "train": "906bbce86eec",
+      "val": "9e7fd70ee12b",
+      "test": "e7af5dcf7d95"
+    }
+  },
+  "split": {
+    "train": 2930,
+    "val": 366,
+    "test": 366,
+    "test_class_counts": [
+      181,
+      37,
+      100,
+      19,
+      29
+    ]
+  },
+  "training": {
+    "epochs_run": 8,
+    "best_epoch": 3,
+    "minutes": 17.67,
+    "best_val_loss": 1.2020042405102422,
+    "val_qwk_at_best": 0.7079404236130452,
+    "val_acc_at_best": 0.6147540983606558,
+    "history": [
+      {
+        "epoch": 1,
+        "phase": "frozen",
+        "lr": 0.0001,
+        "train_loss": 1.4519096393634028,
+        "train_acc": 0.5232081911262798,
+        "val_loss": 1.3632021842758513,
+        "val_acc": 0.5273224043715847,
+        "val_qwk": 0.6124168565181056
+      },
+      {
+        "epoch": 2,
+        "phase": "frozen",
+        "lr": 0.0001,
+        "train_loss": 1.2494083164698435,
+        "train_acc": 0.6235494880546075,
+        "val_loss": 1.2651093058247385,
+        "val_acc": 0.6666666666666666,
+        "val_qwk": 0.7022499494555642
+      },
+      {
+        "epoch": 3,
+        "phase": "frozen",
+        "lr": 0.0001,
+        "train_loss": 1.1527037611186708,
+        "train_acc": 0.6542662116040956,
+        "val_loss": 1.2020042405102422,
+        "val_acc": 0.6147540983606558,
+        "val_qwk": 0.7079404236130452
+      },
+      {
+        "epoch": 4,
+        "phase": "full",
+        "lr": 0.0001,
+        "train_loss": 1.6254511600404775,
+        "train_acc": 0.38293515358361774,
+        "val_loss": 1.524856676169432,
+        "val_acc": 0.48633879781420764,
+        "val_qwk": 0.3079038850899646
+      },
+      {
+        "epoch": 5,
+        "phase": "full",
+        "lr": 0.0001,
+        "train_loss": 1.3781671134735944,
+        "train_acc": 0.5228668941979522,
+        "val_loss": 1.3726204312075683,
+        "val_acc": 0.48360655737704916,
+        "val_qwk": 0.6538864099597863
+      },
+      {
+        "epoch": 6,
+        "phase": "full",
+        "lr": 0.0001,
+        "train_loss": 1.2661902439548498,
+        "train_acc": 0.5802047781569966,
+        "val_loss": 1.3755960736953008,
+        "val_acc": 0.5437158469945356,
+        "val_qwk": 0.622767109798129
+      },
+      {
+        "epoch": 7,
+        "phase": "full",
+        "lr": 0.0001,
+        "train_loss": 1.2215575487604016,
+        "train_acc": 0.6013651877133106,
+        "val_loss": 1.3761660404544058,
+        "val_acc": 0.44808743169398907,
+        "val_qwk": 0.5283491101516898
+      },
+      {
+        "epoch": 8,
+        "phase": "full",
+        "lr": 5e-05,
+        "train_loss": 1.1141201496950697,
+        "train_acc": 0.6334470989761092,
+        "val_loss": 1.2172496288689107,
+        "val_acc": 0.5819672131147541,
+        "val_qwk": 0.6869834822344896
+      }
+    ]
+  },
+  "test": {
+    "n": 366,
+    "loss": 1.1185149788205089,
+    "accuracy": 0.6775956284153005,
+    "f1_macro": 0.5159862127441763,
+    "qwk": 0.8221449209078555,
+    "kappa_linear": 0.7041244832188549,
+    "auc_ovr_macro": 0.8847923500326187,
+    "auc_ovr_weighted": 0.9249472963421299,
+    "auc_micro": 0.9171948251664727,
+    "auc_per_class": [
+      0.97981185605495,
+      0.7923272816889838,
+      0.8997368421052632,
+      0.8915516456848172,
+      0.8605341246290801
+    ]
+  },
+  "bootstrap_ci95": {
+    "accuracy": [
+      0.6284153005464481,
+      0.7240437158469946
+    ],
+    "accuracy_std": 0.02443271145397909,
+    "qwk": [
+      0.7813674608038618,
+      0.8603928269230265
+    ],
+    "qwk_std": 0.020158832754987185,
+    "f1_macro": [
+      0.4504639483375564,
+      0.5720497525151642
+    ],
+    "f1_macro_std": 0.03143209922504708
+  },
+  "averages": {
+    "macro": {
+      "sensitivity": 0.572656062104358,
+      "specificity": 0.9220404575019977,
+      "PPV": 0.5361968532308432,
+      "NPV": 0.9205259938252759,
+      "F1": 0.5159862127441763,
+      "accuracy_ovr": 0.8710382513661202
+    },
+    "weighted": {
+      "sensitivity": 0.6775956284153005,
+      "specificity": 0.9326066590946877,
+      "PPV": 0.7422989063765207,
+      "NPV": 0.901697727074544,
+      "F1": 0.6841370629337171,
+      "accuracy_ovr": 0.8803562363761237
+    },
+    "micro": {
+      "sensitivity": 0.6775956284153005,
+      "specificity": 0.9193989071038251,
+      "PPV": 0.6775956284153005,
+      "NPV": 0.9193989071038251,
+      "F1": 0.6775956284153005,
+      "accuracy_ovr": 0.8710382513661202
+    }
+  },
+  "per_class": [
+    {
+      "class": "No DR",
+      "support": 181,
+      "TP": 169,
+      "FP": 12,
+      "FN": 12,
+      "TN": 173,
+      "sensitivity": 0.9337016574585635,
+      "specificity": 0.9351351351351351,
+      "PPV": 0.9337016574585635,
+      "NPV": 0.9351351351351351,
+      "F1": 0.9337016574585635,
+      "accuracy_ovr": 0.9344262295081968,
+      "AUC": 0.97981185605495
+    },
+    {
+      "class": "Mild DR",
+      "support": 37,
+      "TP": 20,
+      "FP": 44,
+      "FN": 17,
+      "TN": 285,
+      "sensitivity": 0.5405405405405406,
+      "specificity": 0.8662613981762918,
+      "PPV": 0.3125,
+      "NPV": 0.9437086092715232,
+      "F1": 0.39603960396039606,
+      "accuracy_ovr": 0.8333333333333334,
+      "AUC": 0.7923272816889838
+    },
+    {
+      "class": "Moderate DR",
+      "support": 100,
+      "TP": 36,
+      "FP": 13,
+      "FN": 64,
+      "TN": 253,
+      "sensitivity": 0.36,
+      "specificity": 0.9511278195488722,
+      "PPV": 0.7346938775510204,
+      "NPV": 0.7981072555205048,
+      "F1": 0.48322147651006714,
+      "accuracy_ovr": 0.7896174863387978,
+      "AUC": 0.8997368421052632
+    },
+    {
+      "class": "Severe DR",
+      "support": 19,
+      "TP": 13,
+      "FP": 36,
+      "FN": 6,
+      "TN": 311,
+      "sensitivity": 0.6842105263157895,
+      "specificity": 0.8962536023054755,
+      "PPV": 0.2653061224489796,
+      "NPV": 0.9810725552050473,
+      "F1": 0.38235294117647056,
+      "accuracy_ovr": 0.8852459016393442,
+      "AUC": 0.8915516456848172
+    },
+    {
+      "class": "Proliferative DR",
+      "support": 29,
+      "TP": 10,
+      "FP": 13,
+      "FN": 19,
+      "TN": 324,
+      "sensitivity": 0.3448275862068966,
+      "specificity": 0.9614243323442137,
+      "PPV": 0.43478260869565216,
+      "NPV": 0.9446064139941691,
+      "F1": 0.38461538461538464,
+      "accuracy_ovr": 0.912568306010929,
+      "AUC": 0.8605341246290801
+    }
+  ],
+  "classification_report": {
+    "No DR": {
+      "precision": 0.9337016574585635,
+      "recall": 0.9337016574585635,
+      "f1-score": 0.9337016574585635,
+      "support": 181.0
+    },
+    "Mild DR": {
+      "precision": 0.3125,
+      "recall": 0.5405405405405406,
+      "f1-score": 0.39603960396039606,
+      "support": 37.0
+    },
+    "Moderate DR": {
+      "precision": 0.7346938775510204,
+      "recall": 0.36,
+      "f1-score": 0.48322147651006714,
+      "support": 100.0
+    },
+    "Severe DR": {
+      "precision": 0.2653061224489796,
+      "recall": 0.6842105263157895,
+      "f1-score": 0.38235294117647056,
+      "support": 19.0
+    },
+    "Proliferative DR": {
+      "precision": 0.43478260869565216,
+      "recall": 0.3448275862068966,
+      "f1-score": 0.38461538461538464,
+      "support": 29.0
+    },
+    "accuracy": 0.6775956284153005,
+    "macro avg": {
+      "precision": 0.5361968532308432,
+      "recall": 0.572656062104358,
+      "f1-score": 0.5159862127441763,
+      "support": 366.0
+    },
+    "weighted avg": {
+      "precision": 0.7422989063765207,
+      "recall": 0.6775956284153005,
+      "f1-score": 0.6841370629337171,
+      "support": 366.0
+    }
+  },
+  "referable_dr": {
+    "sensitivity": 0.9351351351351351,
+    "specificity": 0.9337016574585635,
+    "PPV": 0.9351351351351351,
+    "NPV": 0.9337016574585635,
+    "accuracy": 0.9344262295081968,
+    "AUC": 0.97981185605495
+  },
+  "confusion_matrix": [
+    [
+      169,
+      12,
+      0,
+      0,
+      0
+    ],
+    [
+      6,
+      20,
+      8,
+      2,
+      1
+    ],
+    [
+      6,
+      27,
+      36,
+      23,
+      8
+    ],
+    [
+      0,
+      1,
+      1,
+      13,
+      4
+    ],
+    [
+      0,
+      4,
+      4,
+      11,
+      10
+    ]
+  ],
+  "class_names": [
+    "No DR",
+    "Mild DR",
+    "Moderate DR",
+    "Severe DR",
+    "Proliferative DR"
+  ],
+  "config": {
+    "INPUT_ROOT": "/kaggle/input",
+    "PREP_DIR": "None",
+    "SPLITS": "('train', 'val', 'test')",
+    "IMG_SIZE": "512",
+    "N_VAL": "366",
+    "N_TEST": "366",
+    "BACKBONE": "vit_base_patch16_224",
+    "CAM_LAYER": "blocks.11.norm1",
+    "FAMILY": "ViT",
+    "N_CLASSES": "5",
+    "PRETRAINED": "True",
+    "FREEZE_EPOCHS": "3",
+    "FREEZE_BN": "True",
+    "LR": "0.0001",
+    "SCHED_FACTOR": "0.5",
+    "SCHED_PATIENCE": "3",
+    "ES_PATIENCE": "5",
+    "MAX_EPOCHS": "50",
+    "CLASS_WEIGHT": "True",
+    "SELECT_ON": "val_qwk",
+    "CAM_METHOD": "gradcam++",
+    "BATCH_SIZE": "4",
+    "ACCUM_STEPS": "4",
+    "NUM_WORKERS": "2",
+    "AMP": "True",
+    "SEED": "42",
+    "DEVICE": "cuda",
+    "MODEL_NAME": "vit_base_patch16_224",
+    "WORK_DIR": "/kaggle/working",
+    "CKPT_PATH": "/kaggle/working/checkpoints/vit_base_patch16_224_s42.pth",
+    "METRIC_DIR": "/kaggle/working/results/metrics",
+    "FIG_DIR": "/kaggle/working/results/figures/vit_base_patch16_224"
+  }
+}
